@@ -8,9 +8,20 @@
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "tsc": "tsc",
-    "build": "npm-run-all clean lint tsc",
+    "build": "npm-run-all lint tsc",
     "dev": "nodemon src/index.ts | pino-pretty",
     "start": "node dist/index.js",
+    "typeorm:sync": "typeorm schema:sync",
+    "typeorm:migrate": "typeorm migration:run",
+    "typeorm:drop": "typeorm schema:drop",
+    "typeorm:logsync": "typeorm schema:log",
+    "typeorm:migration:generate": "typeorm migration:generate",
+    "db:sync": "npm-run-all lint tsc typeorm:sync",
+    "db:drop": "npm-run-all lint tsc typeorm:drop",
+    "db:migrate": "npm-run-all lint tsc typeorm:migrate",
+    "db:logsync": "npm-run-all lint tsc typeorm:logsync",
+    "db:migration-generate": "typeorm migration:generate -n",
+    "db:migration-create": "typeorm migratation:create",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -18,7 +29,10 @@
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "pino": "^5.12.2"
+    "pg": "^7.9.0",
+    "pino": "^5.12.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.16"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
