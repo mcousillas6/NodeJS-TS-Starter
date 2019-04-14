@@ -10,11 +10,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/api/v1', apiRouter);
-
 createConnection()
   .then(() => {
     logger.info('Database connected sucessfuly');
+    app.use('/api/v1', apiRouter);
     app.listen(port, () => {
       logger.info(`server started at port: ${port}`);
     });

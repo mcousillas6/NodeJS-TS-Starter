@@ -6,6 +6,6 @@ const apiRouter = express.Router();
 
 apiRouter.use(bodyParser.json());
 
-apiRouter.use('/users', userRouter);
+apiRouter.use('/users', userRouter.router);
 
 export default apiRouter;

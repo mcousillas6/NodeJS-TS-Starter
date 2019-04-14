@@ -1,9 +1,6 @@
 {
-  "watch": ["src"],
-  "ext": "ts",
+  "watch": ["dist"],
+  "ext": "js",
   "ignore": ["*.test.ts"],
-  "delay": "2",
-  "execMap": {
-    "ts": "ts-node"
-  }
+  "delay": "2"
 }
